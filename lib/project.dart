@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:html' as html;
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +23,10 @@ class _ProjectpageState extends State<Projectpage>
     bool isScreenWide = MediaQuery.of(context).size.width >= 658;
 
     return Scaffold(
-      appBar: Appbarnew(),
+      appBar: const Appbarnew(),
       body: AnimatedBackground(
-        behaviour:
-            SpaceBehaviour(backgroundColor: Color.fromARGB(255, 31, 0, 46)),
+        behaviour: SpaceBehaviour(
+            backgroundColor: const Color.fromARGB(255, 31, 0, 46)),
         vsync: this,
         child: Column(
           children: [
@@ -62,7 +61,7 @@ class _ProjectpageState extends State<Projectpage>
                             onPressed: (() {
                               html.window.open(potproject, 'new tab');
                             }),
-                            child: Icon(
+                            child: const Icon(
                               FontAwesomeIcons.github,
                               color: Colors.white,
                             ))
@@ -70,11 +69,11 @@ class _ProjectpageState extends State<Projectpage>
                     ),
                   ]),
                   Padding(
-                    padding: EdgeInsets.only(top: size.height / 50),
+                    padding: EdgeInsets.only(top: size.height / 40),
                     child: Image.asset(
                       'images/caricon.png',
-                      width: size.width / 5,
-                      height: size.width / 5,
+                      width: size.width / 10,
+                      height: size.width / 10,
                     ),
                   ),
                 ],
@@ -83,7 +82,7 @@ class _ProjectpageState extends State<Projectpage>
           ],
         ),
       ),
-      bottomNavigationBar: Bottomnav(),
+      bottomNavigationBar: const Bottomnav(),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:proj/contact.dart';
 import 'package:proj/homepage.dart';
 import 'package:proj/project.dart';
+import 'package:proj/projectlist.dart';
 
 class Appbarnew extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(100);
@@ -48,7 +49,7 @@ class Appbarnew extends StatelessWidget implements PreferredSizeWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => Projectpage())));
+                              builder: ((context) => ProjectList())));
                     },
                     child: Text(
                       "PROJECTS",

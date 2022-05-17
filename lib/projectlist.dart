@@ -1,54 +1,33 @@
-import 'dart:async';
-
+import 'dart:html' as html;
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proj/bottomnavi.dart';
 import '.env.dart';
 import 'appbar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({Key? key}) : super(key: key);
+class ProjectList extends StatefulWidget {
+  const ProjectList({Key? key}) : super(key: key);
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<ProjectList> createState() => _ProjectListState();
 }
 
-class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
-  @override
-  String intro_name = "Developer";
+class _ProjectListState extends State<ProjectList>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    //print(size.width);
     bool isScreenWide = MediaQuery.of(context).size.width >= 658;
-    final perodictimer = Timer.periodic(
-        const Duration(
-          seconds: 3,
-        ), (timer) {
-      if (intro_name.length < 13) {
-        if (mounted) {
-          setState(() {
-            intro_name += '.';
-          });
-        }
-      } else {
-        if (mounted) {
-          setState(() {
-            intro_name = "Developer";
-          });
-        }
-      }
-    });
 
     return Scaffold(
       appBar: const Appbarnew(),
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.black,
       body: AnimatedBackground(
-        behaviour:
-            SpaceBehaviour(backgroundColor: Color.fromARGB(255, 0, 4, 31)),
+        behaviour: SpaceBehaviour(),
         vsync: this,
-        child: Column(
+        child: ListView(
           children: [
             Padding(
               padding:
@@ -59,34 +38,33 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                 children: [
                   Column(children: [
                     Text(
-                      "Hi I'm Varun\n",
-                      style: GoogleFonts.pressStart2p(
-                          color: Colors.white,
-                          fontSize: size.height / 40,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      intro_name,
+                      "Pothole mapping",
                       style: GoogleFonts.pressStart2p(
                           color: Colors.white,
                           fontSize: size.height / 40,
                           fontWeight: FontWeight.bold),
                     ),
                     Container(
-                      constraints: BoxConstraints(maxWidth: size.width / 2),
+                      constraints: BoxConstraints(maxWidth: size.width / 3),
                       child: Text(
-                        aboutme,
+                        "\nUploading and updating the database of pothole on road on Maps to help people driving their vehicle when the roads are flooded.",
                         style: GoogleFonts.pressStart2p(
                             color: Colors.white,
                             fontSize: size.height / 60,
                             height: 2),
                       ),
                     ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          FontAwesomeIcons.github,
+                          color: Colors.white,
+                        ))
                   ]),
                   Padding(
                     padding: EdgeInsets.only(top: size.height / 50),
                     child: Image.asset(
-                      'images/face.png',
+                      'images/caricon.png',
                       width: size.width / 4,
                       height: size.width / 4,
                     ),
@@ -94,10 +72,18 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(top: size.height / 20),
+              child: Image.asset(
+                'images/amongus.png',
+                width: size.width / 6,
+                height: size.width / 6,
+              ),
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: const Bottomnav(),
+      bottomNavigationBar: Bottomnav(),
     );
   }
 }
