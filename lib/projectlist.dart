@@ -55,7 +55,9 @@ class _ProjectListState extends State<ProjectList>
                       ),
                     ),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          html.window.open(potproject, 'new tab');
+                        },
                         icon: Icon(
                           FontAwesomeIcons.github,
                           color: Colors.white,
